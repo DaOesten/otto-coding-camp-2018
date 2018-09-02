@@ -95,6 +95,7 @@ When programming it is helpful to add some comments where you think that a chunk
 - is a little complex
 - is not self explanatory
 - is a bit long without doing a lot
+
 Adding comments can save coworkers and your future self a lot of time when reading it later.
 
 Example:
@@ -132,7 +133,7 @@ This way it is also harder to forget to put existing code back afterwards.
 To try out a little bit of JS code, the JS Console is your friend. It is part of your browser's _DevTools_.
 Chrome's _DevTools_ are very popular as its team involves the JavaScript community.
 
-Right-Click any where on your page and choose _Inspect element_ or _Element untersuchen_ in german.
+Right-Click anywhere on your page and choose _Inspect element_ or _Element untersuchen_ in german.
 The DevTools should have opened which might look a bit overwhelming at first, but most of the features can be ignored for now.
 Switch to the _Console_ tab.
 
@@ -165,7 +166,9 @@ method|description
 ---|---
 `document.querySelector('YOUR_CSS_SELECTOR')`|This is hands down one of the most useful methods. Find the first element matching a given CSS selector
 `document.querySelectorAll('YOUR_CSS_SELECTOR')`|The same as `document.querySelector`, but instead of returning the first matching element it returns all
-`document.createElement(ELEMENT_TAG_NAME)`|This methods enables us to create new DOM elements  
+`document.createElement('ELEMENT_TAG_NAME')`|This method enables us to create new DOM elements  
+
+Read more about the document object on the MDN (Mozilla Developer Network) web docs: https://developer.mozilla.org/en-US/docs/Web/API/Document 
 
 #### Elements' API
 The elements _inside_ of the DOM also have an API with useful methods.
@@ -183,7 +186,9 @@ property|description
 `YOUR_INPUT_ELEMENT.value`|Some elements like `<input type="text" />` have special properties like `.value` which returns a word (String type)
 `YOUR_INPUT_ELEMENT.checked`|Other input elements like `<input type="checkbox" />` have special properties like `.checked` which returns `true` of `false` (Boolean type)
 
-These properties are _not_ immutable (read only), which means that their values can be changed. 
+These properties are _not_ immutable (read only), which means that their values can be changed.
+
+Read more about the Element object on the MDN (Mozilla Developer Network) web docs: https://developer.mozilla.org/en-US/docs/Web/API/Element 
 
 #### Example: Adding a h1 element to document.body
 ```javascript
@@ -208,6 +213,8 @@ back-ticks|`` `Me too! I'm also string!` ``
 Which one to choose?
 Some code quality tools like JSLint prefer single-quotes. But for the code itself it doesn't matter.
 The back-tick strings are new and have a helpful special ability called _template strings_ which makes concatenating strings **very** easy, but more about that later. 
+
+Read more about the String type on the MDN (Mozilla Developer Network) web docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 ##### Quotes inside of quotes
 
@@ -258,6 +265,8 @@ console.log(6 * '3'); // 18
 console.log('5' % '3'); // 2
 ```
 
+Read more about the Number type on the MDN (Mozilla Developer Network) web docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
 ##### Caution! Addition with strings
 When adding two numbers, but one or both are strings, we have a bug! That is because of _concatenation_. See the 
 section above called _"Concatenating strings (glue-ing strings together)"_
@@ -294,6 +303,8 @@ var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi'
 // Much better! :)
 ```
 
+Read more about the Number type on the MDN (Mozilla Developer Network) web docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
 ##### Iterating of arrays
 It is common to iterate over lists to do something with each item. Let's simply say "Hi!" to everyone from a list of names.
 
@@ -302,7 +313,7 @@ This is where often an example is given similar to this:
 var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
 
 for (var i = 0, len = names.length; i < len; i++) {
-    console.log(names[i]);
+    console.log(`Hi ${names[i]}!`);
 } 
 ```
 
@@ -318,13 +329,44 @@ names.forEach(function sayHi(name) {
 });
 ```
 
-Now again, feel free to pick whatever you feel more comfortable with. The `for` loop or the `forEach` method.
+Also very useful are the methods `.map` and `.filter`. The difference between the three methods is as follows:
 
+method|description
+---|---
+forEach|Simply iterate over an array. If you want to manipulate the array, use `.map` of `.filter` instead. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+map|Iterate over an array to create a new array of the same length. Simply return something in the given function which will be the new item. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+filter|Iterate over an array to create a new array of the same or smaller length. Return `true` in the given function for the items that you want to keep. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter  
+
+The `.foreach` method does not have a return value, but `.map` and `.filter` obviously do.
+That is useful for what developers like to do: creating a chain.
+
+Example
+```javascript
+var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
+
+// pick the names with at least 4 characters and scream their names to the console
+names
+.filter(function containsAtLeast4Characters(name){
+    return name.length >= 4;
+})
+.map(function scream(name) {
+    return name.toUpperCase();
+})
+.forEach(function sayHi(name) {
+    console.log(`Hi ${name}!`);
+});
+```
 ###### For the very curious: Arrow functions
 Just for fun, for those who enjoy shrinking code (code golfing), this is what it would look like with an _arrow function_:
 ```javascript
 var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
 
-names.forEach(name => console.log(`Hi ${name}!`));
+// pick the names with at least 4 characters and scream their names to the console
+names
+.filter(name => name.length >= 4)
+.map(name => name.toUpperCase())
+.forEach(name => console.log(`Hi ${name}!`));
 ```
+
+As arrow functions shave of a lot of noise, they have become very popular in the JS community.
 
