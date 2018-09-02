@@ -153,3 +153,42 @@ console.log(agedUser.age); // 33
 
 For more details, visit the official docs: https://developers.google.com/web/tools/chrome-devtools/console/ 
 
+### The DOM
+
+When the page is rendered by the browser it uses the document to create an object model out of it.
+In short: the **DOM** (Document Object Model)
+
+#### The DOM's API
+JavaScript can interact with the DOM via the `document` object, which has an API with useful methods to modify the DOM.
+
+method|description
+---|---
+`document.querySelector('YOUR_CSS_SELECTOR')`|This is hands down one of the most useful methods. Find the first element matching a given CSS selector
+`document.querySelectorAll('YOUR_CSS_SELECTOR')`|The same as `document.querySelector`, but instead of returning the first matching element it returns all
+`document.createElement(ELEMENT_TAG_NAME)`|This methods enables us to create new DOM elements  
+
+#### Elements' API
+The elements _inside_ of the DOM also have an API with useful methods.
+
+method|description
+---|--- 
+`YOUR_PARENT_ELEMENT.appendChild(YOUR_ELEMENT)`|Append an element created with `document.createElement` as a child to an other element  
+
+Elements also have properties, that can be manipulated. Here are a few:
+
+property|description
+---|---
+`YOUR_ELEMENT.style`|This is a reference to the style object of your element. The `.style` property returns the styles as an object. Objects are explained in the _JS Types_ section below.
+`YOUR_ELEMENT.classList`|The `class` attribute of elements can contain _multiple_ classes. The `.classList` property returns them as a list (Array type)
+`YOUR_INPUT_ELEMENT.value`|Some elements like `<input type="text" />` have special properties like `.value` which returns a word (String type)
+`YOUR_INPUT_ELEMENT.checked`|Other input elements like `<input type="checkbox" />` have special properties like `.checked` which returns `true` of `false` (Boolean type)
+
+These properties are _not_ immutable (read only), which means that their values can be changed. 
+
+#### Example: Adding a h1 element to document.body
+```javascript
+var headline = document.createElement('h1');
+headline.innerText = 'Hello World';
+document.body.appendChild(headline);
+```
+
