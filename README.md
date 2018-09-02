@@ -39,3 +39,23 @@ attribute|description
 `id`|An id to identify a tag that exists only once in the document
 `class`|A class that can be used to apply CSS rules or to query for it with JavaScript. This attribute can be repeated without limitations
 
+## CSS (Cascading Style Sheet)
+
+Tags like `<style></style>` contain CSS rules. 
+The HTML tag is addressed followed by curly braces that contain the CSS rules for the tag.
+```css
+h1 {
+    color: green;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+```
+
+The `class` attribute of HTML tags is helpful to apply CSS rules more specific.
+To address HTML tags by its class name, it's prefixed with a dot. 
+```css
+.hide {
+    display: none;
+}
+```
+
