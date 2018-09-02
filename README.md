@@ -273,3 +273,58 @@ To ensure string to number convertion, use `Number()`:
 console.log(Number('9') + Number('3')); // 12
 ```
 
+#### JS type: Array
+When a list of for example strings is needed, it would be annoying to define a variable for each string.
+```javascript
+var name1 = 'Alice';
+var name2 = 'Bob';
+var name3 = 'Charlie';
+var name4 = 'Dave';
+var name5 = 'Eve';
+var name6 = 'Frank';
+var name7 = 'Grace';
+var name8 = 'Heidi';
+var name9 = 'Judy';
+// This sucks! :(
+```  
+
+Luckily we can create a _real_ list with an _array_!
+```javascript
+var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
+// Much better! :)
+```
+
+##### Iterating of arrays
+It is common to iterate over lists to do something with each item. Let's simply say "Hi!" to everyone from a list of names.
+
+This is where often an example is given similar to this:
+```javascript
+var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
+
+for (var i = 0, len = names.length; i < len; i++) {
+    console.log(names[i]);
+} 
+```
+
+But in JavaScript this started to by seen as a bad practise. JS is heavily event driven which is tightly coupled to functions.
+JS developers are replacing `for` loops in favour of iterators. And arrays happen to be iterators with a `.forEach` method!
+
+So let's look at an alternative example:
+```javascript
+var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
+
+names.forEach(function sayHi(name) {
+    console.log(`Hi ${name}!`);
+});
+```
+
+Now again, feel free to pick whatever you feel more comfortable with. The `for` loop or the `forEach` method.
+
+###### For the very curious: Arrow functions
+Just for fun, for those who enjoy shrinking code (code golfing), this is what it would look like with an _arrow function_:
+```javascript
+var names = ['Alice', 'Bob', 'Charlie', 'Dave', 'Eve', 'Frank', 'Grace', 'Heidi', 'Judy'];
+
+names.forEach(name => console.log(`Hi ${name}!`));
+```
+
