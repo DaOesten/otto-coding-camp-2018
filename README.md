@@ -247,3 +247,29 @@ You can think of _template strings_ as interruptible strings to put any JS state
  
 Use whatever you and your team prefer!
 
+#### JS type: Number
+Unlike in other languages numbers in JavaScript are very dynamic and all have the type `Number`.
+```javascript
+// Using simple numbers (or integers) can result to floating-point numbers on the fly. 
+console.log(5 / 2); // 2.5
+// Also strings that can be cast to numbers, actually are casted on the fly when it is considered useful:
+console.log('4' - 2); // 2
+console.log(6 * '3'); // 18
+console.log('5' % '3'); // 2
+```
+
+##### Caution! Addition with strings
+When adding two numbers, but one or both are strings, we have a bug! That is because of _concatenation_. See the 
+section above called _"Concatenating strings (glue-ing strings together)"_
+```javascript
+console.log(9 + 3); // 12
+console.log('9' + 3); // 93
+console.log(9 + '3'); // 93
+console.log('9' + '3'); // 93
+```
+
+To ensure string to number convertion, use `Number()`:
+```javascript
+console.log(Number('9') + Number('3')); // 12
+```
+
