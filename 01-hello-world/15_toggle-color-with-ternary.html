@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello World</title>
+    <link rel="stylesheet" href="06_main-style.css">
+</head>
+<body>
+    <h1>Hello World</h1>
+
+    <input type="checkbox" id="color-switch">
+    <label for="color-switch">green</label>
+
+    <script>
+        var heading = document.querySelector('h1')
+        var switchLabel = document.querySelector('label')
+
+        document.querySelector('#color-switch').onchange = function () {
+            var color = this.checked
+                        ? 'red'
+                        : 'green';
+
+            heading.style.color = color;
+            switchLabel.innerText = color;
+        };
+    </script>
+</body>
+</html>

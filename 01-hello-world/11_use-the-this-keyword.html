@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="06_main-style.css">
+</head>
+<body>
+    <h1></h1>
+
+    <input type="text" placeholder="Set title...">
+
+    <script>
+        document.querySelector('input').onkeyup = function () {
+            document.querySelector('h1').innerText = this.value;
+            document.querySelector('title').innerText = this.value;
+        };
+    </script>
+</body>
+</html>

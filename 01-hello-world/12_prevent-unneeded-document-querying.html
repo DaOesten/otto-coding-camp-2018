@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="06_main-style.css">
+</head>
+<body>
+    <h1></h1>
+
+    <input type="text" placeholder="Set title...">
+
+    <script>
+        // h1 and title are queried only once
+        var heading = document.querySelector('h1');
+        var title = document.querySelector('title');
+
+        // this function is called at every keystroke, but causes no extra slow document querying
+        document.querySelector('input').onkeyup = function () {
+            heading.innerText = this.value;
+            title.innerText = this.value;
+        };
+    </script>
+</body>
+</html>
