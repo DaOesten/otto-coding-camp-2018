@@ -192,3 +192,58 @@ headline.innerText = 'Hello World';
 document.body.appendChild(headline);
 ```
 
+### JS types
+
+To make it easier to work with different kinds of values, a type system with a handful of types exists.
+
+#### JS type: String
+A chain of characters like words and sentences. Use either single-quotes `'`, double-quotes `"` or back-ticks `` ` ``  to create strings.
+
+quotes|example
+---|---
+single-quotes|`'Hi, I am a string!'`
+double-quotes|`"And I'm also a string!"` 
+back-ticks|`` `Me too! I'm also string!` `` 
+
+Which one to choose?
+Some code quality tools like JSLint prefer single-quotes. But for the code itself it doesn't matter.
+The back-tick strings are new and have a helpful special ability called _template strings_ which makes concatenating strings **very** easy, but more about that later. 
+
+##### Quotes inside of quotes
+
+When using single-quotes, but your string contains single-quotes, you can wrap it in double-quotes instead of single quotes
+```javascript
+var invalid = 'My neighbour's dog is huge!';
+var valid   = "My neighbour's dog is huge!";
+```
+Should your string contain both single- _and_ double-quotes, you can escape quotes by putting a backslash `\` in front of them
+```javascript
+var invalid = 'My neighbour's dog "Samson" is huge!';
+var valid   = 'My neighbour\'s dog "Samson" is huge!';
+```
+or you can use back-ticks
+```javascript
+var invalid = "My neighbour's dog "Samson" is huge!";
+var valid   = `My neighbour's dog "Samson" is huge!`;
+```
+
+##### Concatenating strings (glue-ing strings together)
+The term of glue-ing multiple strings together is called concatenating.
+This is commonly done with the `+` sign.
+
+```javascript
+var str1 = 'Hello';
+var str2 = 'World';
+console.log(str1 + ' ' + str2); // "Hello World"
+```
+
+The modern way is using back-ticks for _template strings_.
+```javascript
+var str1 = 'Hello';
+var str2 = 'World';
+console.log(`${str1} ${str2}`); // "Hello World"
+```
+You can think of _template strings_ as interruptible strings to put any JS statement wherever you like by adding `${JS_CODE}`.
+ 
+Use whatever you and your team prefer!
+
