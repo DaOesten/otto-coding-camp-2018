@@ -370,3 +370,44 @@ names
 
 As arrow functions shave of a lot of noise, they have become very popular in the JS community.
 
+#### JS type: Function
+When looking online we stumble upon different styles for writing a function.
+
+```javascript
+// named function
+function scream(s) {
+    return s.toUpperCase();
+}
+
+// anonymous function (the scream variable is not part of the function, the function is only stored in it)
+var scream = function (s) {
+    return s.toUpperCase();
+};
+
+// arrow function (these are anonymous by nature)
+var scream = s => s.toUpperCase();
+```
+
+So the syntax for defining a function is pretty versatile and the arrow function doesn't even need to have the `function`
+keyword in it and it can return a value without using the `return` keyword.
+
+If you don't feel comfortable using the arrow function shorthand, the normal function syntax is perfectly fine!
+Otherwise you can read more about them here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+As mentioned in the _JS Type Array_ section functions can be used in array's methods like `[].forEach(YOUR_CALLBACK_FUNCTION)`.
+
+Methods themselves actually are functions as well. JavaScript is very focused on functions. Fun fact for those who are
+familiar with object orientated programming: Even classes in JS are secretly functions.
+
+Also functions in JS are first class, which mean they can be stored into variables and passed into functions and even
+be returned by functions. Returning functions can be useful, but that might be too advanced for this document.
+Should you be more curious about this, you might be interested in functional programming, which has gained
+a lot of popularity lately in the JavaScript community. Suggested reading material: https://github.com/getify/Functional-Light-JS
+
+##### Why use functions?
+- handle user interaction
+- dry principle
+w.i.p.
+
+#### JS type: Object
+w.i.p.
