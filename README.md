@@ -59,3 +59,97 @@ To address HTML tags by its class name, it's prefixed with a dot.
 }
 ```
 
+## JS (JavaScript)
+
+### Variables
+To begin, let's take a look at this simple code snippet.
+```javascript
+var name = 'Alice';
+```
+What we have here is an _assignment_ which contains these five parts
+1. `var`
+2. `name`
+3. `=`
+4. `'Alice'`
+5. `;`
+
+The `var` keyword and the semicolon `;` might not be clear, but the rest reads like _Name is Alice_.
+You might ask yourself _"But which Alice?!"_, but instead try to not think big. Think small here.
+We actually do not have a person here, instead we just put a word _Alice_ into a little container called `name`.
+
+This little container is called a variable. That is why the keyword `var` stands in front of it.
+
+Note: The semicolon `;` is there to tell the JS engine where the assignment ends. That's because in JS Code you do _not_
+have to put every statement on its own line, instead you can write lots of code on one line.     
+
+#### `const` and `let`
+Note: If you are new to JS, you can skip this section about `const` and `let`. It is totally fine to stick with `var`!
+
+Because the `var` keyword in JavaScript binds variables to function scopes instead of code blocks, `var` has caused
+many headaches for developers in the past. Especially in the combination of loops and asynchronous code.
+Luckily nowadays we have `const` and `let` that actually are scoped to code blocks. Keep in mind though, these are not
+supported in less modern browsers.
+
+### Comments
+When programming it is helpful to add some comments where you think that a chunk of code
+- is a little complex
+- is not self explanatory
+- is a bit long without doing a lot
+Adding comments can save coworkers and your future self a lot of time when reading it later.
+
+Example:
+```javascript
+/**
+ * Copy a person. The copy is a year older.
+ */
+function birthday(person) {
+    return Object.assign({}, person, { age: person.age + 1 });
+}
+```
+Here it is ok, if someone has trouble remembering what `Object.assign()` does, thanks to the function's helpful comment.
+
+Another common thing developers do, instead of temporary deleting lines of code, they comment them out.
+
+Line comments:
+```javascript
+var someResult = someFunction();
+// console.log(someResult);
+someOtherResult = otherFunction(someResult);
+// console.log(someOtherResult);
+```
+
+Block comments:
+```javascript
+var someResult = someFunction();
+someOtherResult = otherFunction(someResult);
+/* console.log(someResult);
+console.log(someOtherResult); */
+```
+
+This way it is also harder to forget to put existing code back afterwards. 
+
+### Console
+To try out a little bit of JS code, the JS Console is your friend. It is part of your browser's _DevTools_.
+Chrome's _DevTools_ are very popular as its team involves the JavaScript community.
+
+Right-Click any where on your page and choose _Inspect element_ or _Element untersuchen_ in german.
+The DevTools should have opened which might look a bit overwhelming at first, but most of the features can be ignored for now.
+Switch to the _Console_ tab.
+
+To try the console, type the statement `1 + 1` in it and press enter. The console should respond with the number `2`.
+
+When you write JavaScript for your page in an editor like _Microsoft's Visual Studio Code_ or _GitHub's Atom.io_
+and during development you want to know better what is going on inside of your code, you can write information to
+the console. The `console` object for that is available everywhere in your code and it has a method called `log`.
+
+Example: 
+```javascript
+var user = { name: 'Alice', age: 32 }
+var agedUser = birthday(user);
+
+// So what age is the user now?
+console.log(agedUser.age); // 33
+```
+
+For more details, visit the official docs: https://developers.google.com/web/tools/chrome-devtools/console/ 
+
