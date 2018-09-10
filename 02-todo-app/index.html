@@ -42,14 +42,14 @@
             rendertask('done');
         }
 
-        function createtaskItemsHTML(todoOrDone) {
+        function createTaskItemsHTML(todoOrDone) {
             return tasks[todoOrDone].map(function (item, index) {
                 return `<li class="task-item ${todoOrDone}" onclick="switchState(${index}, '${todoOrDone}')">${item}</li>`;
             }).join('');
         }
 
         function rendertask(todoOrDone) {
-            document.querySelector(`#${todoOrDone}-task`).innerHTML = createtaskItemsHTML(todoOrDone);
+            document.querySelector(`#${todoOrDone}-task`).innerHTML = createTaskItemsHTML(todoOrDone);
         }
 
         document.querySelector('#add-item-form').onsubmit = function addItem() {
