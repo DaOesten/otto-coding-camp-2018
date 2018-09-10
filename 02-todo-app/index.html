@@ -7,9 +7,11 @@
         .task-item {
             cursor: pointer;
         }
+
         .task-item.todo:hover, .task-item.done {
             text-decoration: line-through;
         }
+
         .task-item.done:hover, .task-item.todo {
             text-decoration: none;
         }
@@ -19,7 +21,7 @@
     <h1>My Tasks</h1>
 
     <form action="#" id="add-item-form">
-        <label for="add-item-input">Add item: </label><input type="text" id="add-item-input" autofocus />
+        <label for="add-item-input">Add item: </label><input type="text" id="add-item-input" autofocus/>
     </form>
 
     <h2>Todo</h2>
@@ -38,8 +40,8 @@
         function switchState(index, todoOrDone) {
             tasks[todoOrDone === 'todo' ? 'done' : 'todo'].unshift(tasks[todoOrDone][index]);
             tasks[todoOrDone].splice(index, 1);
-            rendertask('todo');
-            rendertask('done');
+            renderTask('todo');
+            renderTask('done');
         }
 
         function createTaskItemsHTML(todoOrDone) {
@@ -48,21 +50,21 @@
             }).join('');
         }
 
-        function rendertask(todoOrDone) {
+        function renderTask(todoOrDone) {
             document.querySelector(`#${todoOrDone}-task`).innerHTML = createTaskItemsHTML(todoOrDone);
         }
 
         document.querySelector('#add-item-form').onsubmit = function addItem() {
             if (document.querySelector('#add-item-input').value.trim() !== '') {
                 tasks.todo.unshift(document.querySelector('#add-item-input').value);
-                rendertask('todo');
-                document.querySelector('#add-item-input').value = ''
+                renderTask('todo');
+                document.querySelector('#add-item-input').value = '';
             }
         };
 
 
-        rendertask('todo');
-        rendertask('done');
+        renderTask('todo');
+        renderTask('done');
     </script>
 </body>
 </html>
