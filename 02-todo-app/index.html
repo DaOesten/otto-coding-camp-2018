@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Tasks</title>
+    <style>
+        .task-item {
+            cursor: pointer;
+        }
+        .task-item.todo:hover, .task-item.done {
+            text-decoration: line-through;
+        }
+        .task-item.done:hover, .task-item.todo {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Tasks</h1>
+
+    <form action="#" id="add-item-form">
+        <label for="add-item-input">Add item: </label><input type="text" id="add-item-input" autofocus />
+    </form>
+
+    <h2>Todo</h2>
+    <ol id="todo-task"></ol>
+
+    <h2>Done</h2>
+    <ol id="done-task"></ol>
+
+    <script>
+        const tasks = {
+            todo: [],
+            done: []
+        };
+
+
+        function switchState(index, todoOrDone) {
+            tasks[todoOrDone === 'todo' ? 'done' : 'todo'].unshift(tasks[todoOrDone][index]);
+            tasks[todoOrDone].splice(index, 1);
+            rendertask('todo');
+            rendertask('done');
+        }
+
+        function createtaskItemsHTML(todoOrDone) {
+            return tasks[todoOrDone].map(function (item, index) {
+                return `<li class="task-item ${todoOrDone}" onclick="switchState(${index}, '${todoOrDone}')">${item}</li>`;
+            }).join('');
+        }
+
+        function rendertask(todoOrDone) {
+            document.querySelector(`#${todoOrDone}-task`).innerHTML = createtaskItemsHTML(todoOrDone);
+        }
+
+        document.querySelector('#add-item-form').onsubmit = function addItem() {
+            if (document.querySelector('#add-item-input').value.trim() !== '') {
+                tasks.todo.unshift(document.querySelector('#add-item-input').value);
+                rendertask('todo');
+                document.querySelector('#add-item-input').value = ''
+            }
+        };
+
+
+        rendertask('todo');
+        rendertask('done');
+    </script>
+</body>
+</html>
