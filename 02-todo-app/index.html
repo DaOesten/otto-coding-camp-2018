@@ -20,7 +20,7 @@
 <body>
     <h1>My Tasks</h1>
 
-    <form action="#" id="add-item-form">
+    <form id="add-item-form">
         <label for="add-item-input">Add item: </label><input type="text" id="add-item-input" autofocus/>
     </form>
 
@@ -54,7 +54,9 @@
             document.querySelector(`#${todoOrDone}-task`).innerHTML = createTaskItemsHTML(todoOrDone);
         }
 
-        document.querySelector('#add-item-form').onsubmit = function addItem() {
+        document.querySelector('#add-item-form').onsubmit = function addItem(event) {
+            event.preventDefault();
+
             if (document.querySelector('#add-item-input').value.trim() !== '') {
                 tasks.todo.unshift(document.querySelector('#add-item-input').value);
                 renderTask('todo');
