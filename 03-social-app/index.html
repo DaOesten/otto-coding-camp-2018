@@ -9,43 +9,14 @@
 <body>
     <h1>My Social Stream</h1>
 
-    <form action="#" id="add-post-form">        
-        <textarea id="add-post-input-text" placeholder="How are you doing today?" autofocus cols="100" rows="10"></textarea>
+    <form id="add-post-form">
+        <textarea id="add-post-text" placeholder="How are you doing today?" autofocus cols="100" rows="10"></textarea>
         <br>
         <button>post</button>
     </form>
 
     <div class="posts"></div>
-    
-    <script>
-        function incrementLikes(likeButton) {
-            likeButton.innerText = parseInt(likeButton.innerText, 10) + 1;
-        }
-        
-        function createPostHTML(post) {
-            const newPostDiv = document.createElement('div');
-            newPostDiv.className = 'post';
-            newPostDiv.innerHTML = `${post.text}<button class="likes" onclick="incrementLikes(this)">${post.likes}</button>`;
-            return newPostDiv;
-        }
-        
-        function prependPost(post) {
-            postsDiv.prepend(createPostHTML(post));
-        }
-        
-        function addPost() {
-            const newPostText = newPostTextArea.value;
-            if (newPostText.trim() !== '') {
-                const newPost = { text: newPostText, likes: 0 };
-                prependPost(newPost);
-                newPostTextArea.value = '';
-            }   
-        }
 
-        const newPostTextArea = document.querySelector('#add-post-input-text');
-        const postsDiv = document.querySelector('.posts');
-
-        document.querySelector('button').onclick = addPost;
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
