@@ -2,35 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Tasks</title>
+    <title>My Social Stream</title>
     <style>
-        .task-item {
-            cursor: pointer;
-        }
-
-        .task-item.todo:hover, .task-item.done {
-            text-decoration: line-through;
-        }
-
-        .task-item.done:hover, .task-item.todo {
-            text-decoration: none;
-        }
     </style>
 </head>
 <body>
     <h1>My Social Stream</h1>
 
-    <form action="#" id="add-item-form">
-        
-        <label for="add-item-input-title">Title: </label><input type="text" id="add-item-input-title" autofocus/>
-        <br>
-        <textarea id="add-item-input-text"></textarea>
+    <form action="#" id="add-post-form">        
+        <textarea id="add-post-input-text" placeholder="How are you doing today?" autofocus cols="100" rows="10"></textarea>
         <br>
         <button>post</button>
     </form>
 
+    <div class="posts"></div>
+    
     <script>
-        const posts = [{title: "Hello", text: "my name is Shelly!", likes: 10}];
+        function incrementLikes(likeButton) {
+            likeButton.innerText = parseInt(likeButton.innerText, 10) + 1;
+        }
+        
+        function createPostHTML(post) {
+            const newPostDiv = document.createElement('div');
+            newPostDiv.className = 'post';
+            newPostDiv.innerHTML = `${post.text}<button class="likes" onclick="incrementLikes(this)">${post.likes}</button>`;
+            return newPostDiv;
+        }
+        
+        function prependPost(post) {
+            postsDiv.prepend(createPostHTML(post));
+        }
+        
+        function addPost() {
+            const newPostText = newPostTextArea.value;
+            if (newPostText.trim() !== '') {
+                const newPost = { text: newPostText, likes: 0 };
+                prependPost(newPost);
+                newPostTextArea.value = '';
+            }   
+        }
+
+        const newPostTextArea = document.querySelector('#add-post-input-text');
+        const postsDiv = document.querySelector('.posts');
+
+        document.querySelector('button').onclick = addPost;
     </script>
 </body>
 </html>
