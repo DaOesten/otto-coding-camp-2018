@@ -45,7 +45,7 @@
         }
 
         function createTaskItemsHTML(todoOrDone) {
-            return tasks[todoOrDone].map(function (item, index) {
+            return tasks[todoOrDone].map(function createTaskItemHTML(item, index) {
                 return `<li class="task-item ${todoOrDone}" onclick="switchState(${index}, '${todoOrDone}')">${item}</li>`;
             }).join('');
         }
